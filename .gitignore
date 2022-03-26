@@ -1,0 +1,10 @@
+*.log
+*.pyc
+local_settings.py
+db.sqlite3
+.env
+.venv
+venv
+img
+.*_cache
+__pycache__/

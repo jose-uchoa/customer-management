@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cadastro &#8739; Clientes</title>
+</head>
+
+{% extends 'model_page.html' %}
+
+{% block content %}
+
+    <h2>Clientes</h2>
+
+    <a href={% url 'index' %}>
+        <button type="button" class="btn btn-secondary btn-sm" style="float: left; margin-bottom: 25px; margin-top: 10px">Voltar</button>
+    </a>
+
+    <a href="{% url "customer:customer-create" %}">
+        <button type="button" class="btn btn-success btn-sm" style="float: left; margin-bottom: 25px; margin-top: 10px; margin-left: 10px">Novo Cliente</button>
+    </a>
+
+    <form>
+        <div class="form-group" style="width: 93%">
+            <input class="form-control" type="text" name="name" placeholder="Buscar por nome...">
+        </div>
+        <button type="submit" class="btn btn-primary mb-4" style="float: right; margin-top: -54px">Buscar</button>
+    </form>
+
+    <table class="table table-bordered">
+
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Editar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            {% for customer in customer_list %}
+                <tr>
+                    <td>{{ customer.get_full_name }}</td>
+                    <td>{{ customer.get_full_city }}</td>
+                    <td>{{ customer.get_full_phone_number }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td><a href="{{ customer.get_absolute_url }}"><button type="button" class="btn btn-secondary btn-sm" style="width: 100px">Editar</button></a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+      </table>
+
+        <ul class="pagination">
+          {% if page_obj.has_previous %}
+              <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+          {% else %}
+              <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+          {% endif %}
+
+          {% for object in page_obj.paginator.page_range %}
+              <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+              <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Próximo</a></li>
+          {% else %}
+              <li class="page-item disabled"><a class="page-link" href="#">Próximo</a></li>
+          {% endif %}
+        </ul>
+
+{% endblock %}
+
+</html>
