@@ -14,7 +14,6 @@
 - [Funcionalidades](#funcionalidades)
 - [Aplicação](#aplicação)
 - [Ferramentas utilizadas](#ferramentas-utilizadas)
-- [Acesso ao projeto](#acesso-ao-projeto)
 - [Desenvolvedores](#desenvolvedores)
 
 ## Descrição do projeto 
@@ -69,12 +68,6 @@
 :heavy_check_mark: `Framework Secundaria:` Bootstrap
 
 ###
-
-## Acesso ao projeto
-
-Clique no link a seguir para <a href="https://customerss.herokuapp.com/" target="_blank">acessar o projeto</a>.
-
-
 
 ## Desenvolvedores
 
